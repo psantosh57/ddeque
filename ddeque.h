@@ -34,6 +34,7 @@ public:
 	//WRITE CODE
 
 private:
+
 	//WRITE CODE
 };
 
@@ -52,6 +53,20 @@ public:
 	//No credit will be given if takes O(n)
 	//Write CODE here
 
+	ddeque() : _deque(true), _ptr(0) {
+
+		cout << "In ddqeue const" << endl;
+
+	}
+
+	~ddeque() {
+
+		cout << "In ddeque dest" << endl;
+	}
+
+
+
+	void push_back(const T& t);
 	bool display() const { return _display; }
 	void set_display(bool x) {
 		darray<T>::set_display(x);
@@ -62,6 +77,10 @@ private:
 	/* MUST USE only darray<T>. You can use multiples of darray<T> */
 	/* Can have some private variables */
 	/* Write Code here */
+
+	darray<T> _deque;
+	int _ptr;
+
 
 	/* CAN HAVE ANY PRIVATE FUNCION */
 	void _put(int pos, const T& a);

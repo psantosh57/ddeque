@@ -28,7 +28,9 @@ NOTHING CAN BE CHANGED IN THIS FILE
 /*--------------------------------------------------------
 local to this file. Change verbose = true for debugging
 ----------------------------------------------------------*/
-static bool verbose = false;
+static bool verbose = true;
+
+#if 0
 
 /*----------------------------------------------------------------
 Multiply integer by 10
@@ -403,10 +405,13 @@ static void test(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& o), void(*df) (T
 }
 
 
+#endif //0
+
 /*----------------------------------------------------------------
 main
 -----------------------------------------------------------------*/
 int main() {
+#if 0
 	complex::set_display(verbose);
 	{
 		ddeque<complex> a;
@@ -440,6 +445,15 @@ int main() {
 	cout << "ALL TESTs PassED. You can rest in peace" << endl;
 	cout << "push, pop, front, back, a[i] must take O(1) in your ddeque operation\n";
 	cout << "Otherwise, you will get C for this assignment\n";
+#endif // 0
+
+	//complex::set_display(verbose);
+	ddeque<int> a;
+	test<int>(a, g, construct_an_integer_object, nullptr);
+	//a.push_back(complex(7, -8));
+
+	//complex* b = new complex(0);
+
 	return 0;
 }
 
