@@ -41,7 +41,7 @@ T& ddeque<T>::front() {
 	
 	assert(_front == -1 && _back == -1);
 
-		if (_front >= 0) {
+		if (_front == -1) {
 
 			return _dequeFront[_front];
 		}

@@ -67,13 +67,13 @@ public:
 
 	T& operator[] (int index) {
 
-		if (index < _front) {
+		if (_front == -1) {
 
-			return _dequeFront[(_front + 1) -index];
+			return _dequeBack[index];
 		}
-		else if (index >= _back) {
+		else if (_back == -1) {
 
-			return _dequeBack[index - ((_back + 1) + _front)];
+			return _dequeFront[index];
 		}
 		//return _dequeBack[index];
 	}
