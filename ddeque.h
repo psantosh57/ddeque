@@ -34,8 +34,43 @@ class ddeque_iterator {
 public:
 	//WRITE CODE
 
+	ddeque_iterator(T* x = 0) : _current(x) {
+
+		cout << "In ddeque_iterator const" << endl;
+	}
+
+	~ddeque_iterator() {
+
+		cout << "In ddeque_iterator dest" << endl;
+	}
+
+	const T& operator*() const {
+
+		return *(_current);
+	}
+
+	ddeque_iterator& operator++() {
+
+		++_current;
+
+		return *this;
+	}
+
+	ddeque_iterator& operator--() {
+
+		--_current;
+
+		return *this;
+	}
+
+	bool operator!=(const ddeque_iterator& rhs) {
+
+		return (_current != rhs._current);
+	}
+
 private:
 
+	T* _current;
 	//WRITE CODE
 };
 
@@ -81,6 +116,15 @@ public:
 		}
 	}
 
+	iterator begin() {
+
+		return ddeque<T>::iterator(&front());
+	}
+
+	iterator end() {
+
+		return ddeque<T>::iterator(&back());
+	}
 	void push_back(const T& t);
 	void push_front(const T& t);
 	T& front();

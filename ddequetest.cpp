@@ -301,9 +301,7 @@ static void understanding_access(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& 
 	cout << "Random access of a[" << x << "]= " << a[x] << endl;
 }
 
-#endif //1
 
-#if 0
 
 /*----------------------------------------------------------------
 a[0] ..... a[9]
@@ -349,6 +347,10 @@ static void understanding_iterator(ddeque<T>& a, deque<T>& g, bool display = fal
 	}
 	cout << "-----------------" << endl;
 }
+
+#endif //1
+
+#if 0
 
 /*----------------------------------------------------------------
 delete until empty
@@ -426,8 +428,8 @@ template <typename T>
 static void test(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& o), void(*df) (T& c)) {
 	print1("begin with", a, g);
 	understanding_access(a, g, pf);
-#if 0
 	understanding_iterator(a, g);
+#if 0
 	apply("multiply by 10", a, g, multiply_by_10);
 	cout << endl;
 	apply("print using iterator after multiplying by 10", a, g, print_obj);
