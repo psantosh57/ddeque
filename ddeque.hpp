@@ -14,7 +14,6 @@ This file has class definition
 Write all code here
 -----------------------------------------------------------------*/
 template <typename T>
-
 void ddeque<T>::push_back(const T& t) {
 
 	_deque[_ptr++] = t;
@@ -22,7 +21,11 @@ void ddeque<T>::push_back(const T& t) {
 }
 
 
+template <typename T>
+int ddeque<T>::size() {
 
+	return _ptr;
+}
 
 
 

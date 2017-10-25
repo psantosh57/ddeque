@@ -1,3 +1,4 @@
+#pragma once
 /*----------------------------------------------------------------
 Copyright (c) 2017 Author: Jagadeesh Vasudevamurthy
 file: ddeque.h
@@ -64,9 +65,13 @@ public:
 		cout << "In ddeque dest" << endl;
 	}
 
+	T& operator[] (int index) {
 
+		return _deque[index - 1];
+	}
 
 	void push_back(const T& t);
+	int size();
 	bool display() const { return _display; }
 	void set_display(bool x) {
 		darray<T>::set_display(x);
