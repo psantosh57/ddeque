@@ -54,7 +54,7 @@ public:
 	//No credit will be given if takes O(n)
 	//Write CODE here
 
-	ddeque() : _dequeBack(), _dequeFront(), _ptr(0), _front(-1), _back(-1) {
+	ddeque() : _dequeBack(), _dequeFront(), _ptr(0), _front(0), _back(0) {
 
 		cout << "In ddqeue const" << endl;
 
@@ -67,15 +67,18 @@ public:
 
 	T& operator[] (int index) {
 
-		if (_front == -1) {
+		if ((_front - index) > 0) {
 
-			return _dequeBack[index];
+			return _dequeFront[(_front - index - 1)];
 		}
-		else if (_back == -1) {
+		else if (_front == index) {
 
-			return _dequeFront[index];
+			return _dequeBack[0];
 		}
-		//return _dequeBack[index];
+		else {
+
+			return _dequeBack[(index - _front)];
+		}
 	}
 
 	void push_back(const T& t);
