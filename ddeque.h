@@ -54,7 +54,7 @@ public:
 	//No credit will be given if takes O(n)
 	//Write CODE here
 
-	ddeque() : _deque(true), _ptr(0) {
+	ddeque() : _dequeBack(), _dequeFront(), _ptr(0), _front(-1), _back(-1) {
 
 		cout << "In ddqeue const" << endl;
 
@@ -67,10 +67,21 @@ public:
 
 	T& operator[] (int index) {
 
-		return _deque[index - 1];
+		if (index < _front) {
+
+			return _dequeFront[(_front + 1) -index];
+		}
+		else if (index >= _back) {
+
+			return _dequeBack[index - ((_back + 1) + _front)];
+		}
+		//return _dequeBack[index];
 	}
 
 	void push_back(const T& t);
+	void push_front(const T& t);
+	T& front();
+	T& back();
 	int size();
 	bool display() const { return _display; }
 	void set_display(bool x) {
@@ -83,8 +94,11 @@ private:
 	/* Can have some private variables */
 	/* Write Code here */
 
-	darray<T> _deque;
+	darray<T> _dequeBack;
+	darray<T> _dequeFront;
 	int _ptr;
+	int _front;
+	int _back;
 
 
 	/* CAN HAVE ANY PRIVATE FUNCION */

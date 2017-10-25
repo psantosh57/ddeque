@@ -168,6 +168,9 @@ static void delete_obj(T& a) {
 	delete(a);
 }
 
+#endif //0
+
+#if 1
 
 /*----------------------------------------------------------------
 swap
@@ -178,10 +181,6 @@ static void swap1(T& a, T& b) {
 	a = b;
 	b = t;
 }
-
-#endif //0
-
-#if 1
 
 /*----------------------------------------------------------------
 print1
@@ -249,7 +248,7 @@ a.pop_back() - Last element of the ddeque is removed. Nothing is returned
 template <typename T>
 static void understanding_access(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& o)) {
 	print1("begin with", a, g);
-	const int MAX = 1000;
+	const int MAX = 10;
 	Random r;
 	for (int i = 0; i < MAX; i++) {
 		T o;
@@ -268,7 +267,7 @@ static void understanding_access(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& 
 			g.push_front(og);
 		}
 	}
-	print1("After insertiing 1000 elements", a, g);
+	print1("After insertiing 1000 elements", a, g, true);
 	//shuffle now by MAX times
 
 	for (int i = 0; i < MAX; i++) {
