@@ -153,9 +153,12 @@ public:
 	}
 	void push_back(const T& t);
 	void push_front(const T& t);
+	void pop_back();
+	void pop_front();
 	T& front();
 	T& back();
 	int size();
+	bool empty();
 	bool display() const { return _display; }
 	void set_display(bool x) {
 		darray<T>::set_display(x);

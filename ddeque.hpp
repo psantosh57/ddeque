@@ -64,8 +64,38 @@ T& ddeque<T>::back() {
 
 }
 
+template <typename T>
+bool ddeque<T>::empty() {
 
+	return (!_ptr);
 
+}
+
+template <typename T>
+void ddeque<T>::pop_back() {
+
+	if (empty()) {
+
+		assert(0);
+	}
+
+	--_ptr;
+	--_back;
+
+}
+
+template <typename T>
+void ddeque<T>::pop_front() {
+
+	if (empty()) {
+
+		assert(0);
+	}
+
+	--_ptr;
+	--_front;
+
+}
 
 
 

@@ -408,9 +408,7 @@ static void test(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& o), void(*df) (T
 	cout << endl;
 	apply("print using iterator after multiplying by 10", a, g, print_obj);
 	cout << endl;
-#if 0
 	delete_until_empty(a, g, df);
-#endif // 0
 
 }
 
@@ -469,11 +467,11 @@ int main() {
 
 	//complex* b = new complex(0);  
 #endif // 0
+	
+	ddeque<complex*> a;
+	deque<complex*>  g; //Gold
+	test<complex*>(a, g, construct_an_complex_star_object, delete_obj);
 
-
-	ddeque<complex> a;
-	deque<complex>  g; //Gold
-	//test<complex>(a, g, construct_an_complex_object, nullptr);
 
 	return 0;
 }
