@@ -30,7 +30,6 @@ local to this file. Change verbose = true for debugging
 ----------------------------------------------------------*/
 static bool verbose = true;
 
-#if 0
 
 /*----------------------------------------------------------------
 Multiply integer by 10
@@ -92,9 +91,6 @@ static void print_obj(complex*& c) {
 	print_obj(*c);
 }
 
-#endif //0
-
-#if 1
 
 
 /*----------------------------------------------------------------
@@ -134,10 +130,6 @@ static void construct_an_integer_object(int x, int& o) {
 	o = x;
 }
 
-#endif //1
-
-#if 0
-
 
 /*----------------------------------------------------------------
 construct a integer* object
@@ -168,9 +160,6 @@ static void delete_obj(T& a) {
 	delete(a);
 }
 
-#endif //0
-
-#if 1
 
 /*----------------------------------------------------------------
 swap
@@ -206,9 +195,6 @@ static void print1(const char* s, ddeque<T>& a, deque<T>& g, bool print = false)
 	}
 }
 
-#endif //1
-
-#if 0
 
 /*----------------------------------------------------------------
 apply a function pf on elements of ddeque a
@@ -233,9 +219,6 @@ static void apply(const char* s, ddeque<T>& a, deque<T>& g, void(*pf)(T& x)) {
 	cout << endl;
 }
 
-#endif //0
-
-#if 1
 
 /*----------------------------------------------------------------
 a.front() -- Returns first element of the ddeque
@@ -348,10 +331,6 @@ static void understanding_iterator(ddeque<T>& a, deque<T>& g, bool display = fal
 	cout << "-----------------" << endl;
 }
 
-#endif //1
-
-#if 0
-
 /*----------------------------------------------------------------
 delete until empty
 -----------------------------------------------------------------*/
@@ -416,10 +395,6 @@ static void delete_until_empty(ddeque<T>& a, deque<T>& g, void(*df) (T& c)) {
 	cout << "Before deleteing the queue\n";
 }
 
-#endif //0
-
-#if 1
-
 
 /*----------------------------------------------------------------
 test
@@ -429,18 +404,16 @@ static void test(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& o), void(*df) (T
 	print1("begin with", a, g);
 	understanding_access(a, g, pf);
 	understanding_iterator(a, g);
-#if 0
 	apply("multiply by 10", a, g, multiply_by_10);
 	cout << endl;
 	apply("print using iterator after multiplying by 10", a, g, print_obj);
 	cout << endl;
+#if 0
 	delete_until_empty(a, g, df);
 #endif // 0
 
 }
 
-
-#endif //1
 
 /*----------------------------------------------------------------
 main
@@ -452,12 +425,16 @@ int main() {
 		ddeque<complex> a;
 		a.push_back(complex(7, -8));
 	}
+
 	{
 		//TEST INTEGER
 		ddeque<int> a;
 		deque<int>  g; //Gold
 		test<int>(a, g, construct_an_integer_object, nullptr);
 	}
+
+
+
 	{
 		//TEST pointer to INTEGER
 		ddeque<int*> a;
@@ -482,6 +459,7 @@ int main() {
 	cout << "Otherwise, you will get C for this assignment\n";
 #endif // 0
 
+#if 0
 	//complex::set_display(verbose);
 	ddeque<int> a;
 	deque<int> g;
@@ -489,7 +467,13 @@ int main() {
 	test<int>(a, g, construct_an_integer_object, nullptr);
 	//a.push_back(complex(7, -8));
 
-	//complex* b = new complex(0);
+	//complex* b = new complex(0);  
+#endif // 0
+
+
+	ddeque<complex> a;
+	deque<complex>  g; //Gold
+	//test<complex>(a, g, construct_an_complex_object, nullptr);
 
 	return 0;
 }

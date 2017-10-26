@@ -34,18 +34,13 @@ class ddeque_iterator {
 public:
 	//WRITE CODE
 
-	ddeque_iterator(T* x = 0, T* y = 0, int front = 0, int back = 0) : _current(x), _currFront(x), _currBack(y), _itrFront(front), _itrBack(back) {
-
-		cout << "In ddeque_iterator const" << endl;
-	}
+	ddeque_iterator(T* x = 0, T* y = 0, int front = 0, int back = 0) : _current(x), _currFront(x), _currBack(y), _itrFront(front), _itrBack(back) {}
 
 	~ddeque_iterator() {
-
-		cout << "In ddeque_iterator dest" << endl;
 		_current = 0;
 	}
 
-	const T& operator*() const {
+	T& operator*() const {
 
 		return *(_current);
 	}
@@ -54,8 +49,8 @@ public:
 
 		if ((_itrFront-1) > 0) {
 
-			//--_current;
-			_current = --_currFront;
+			--_current;
+			//_current = --_currFront;
 			--_itrFront;
 
 		}
@@ -71,7 +66,18 @@ public:
 
 	ddeque_iterator& operator--() {
 
-		--_current;
+		if ((_itrBack - 1) >= 0 && _currBack) {
+
+			--_current;
+			//_current = --_currBack;
+			--_itrBack;
+
+		}
+		else {
+
+			_current = _currBack++;
+
+		}
 
 		return *this;
 	}
@@ -106,16 +112,9 @@ public:
 	//No credit will be given if takes O(n)
 	//Write CODE here
 
-	ddeque() : _dequeBack(), _dequeFront(), _ptr(0), _front(0), _back(0) {
+	ddeque() : _dequeBack(), _dequeFront(), _ptr(0), _front(0), _back(0) {}
 
-		cout << "In ddqeue const" << endl;
-
-	}
-
-	~ddeque() {
-
-		cout << "In ddeque dest" << endl;
-	}
+	~ddeque() {}
 
 	T& operator[] (int index) {
 
@@ -140,7 +139,17 @@ public:
 
 	iterator end() {
 
-		return ddeque<T>::iterator(&back(), &_dequeFront[0], _front, _back);
+		if (_back == 0) {
+
+			return ddeque<T>::iterator(&_dequeFront[0], 0, _front, _back);
+		}
+		else {
+
+			//return _dequeBack[_back];
+			return ddeque<T>::iterator(&_dequeBack[_back], &_dequeFront[0], _front, _back);
+		}
+
+		
 	}
 	void push_back(const T& t);
 	void push_front(const T& t);
