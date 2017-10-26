@@ -28,7 +28,7 @@ NOTHING CAN BE CHANGED IN THIS FILE
 /*--------------------------------------------------------
 local to this file. Change verbose = true for debugging
 ----------------------------------------------------------*/
-static bool verbose = true;
+static bool verbose = false;
 
 
 /*----------------------------------------------------------------
@@ -231,7 +231,7 @@ a.pop_back() - Last element of the ddeque is removed. Nothing is returned
 template <typename T>
 static void understanding_access(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& o)) {
 	print1("begin with", a, g);
-	const int MAX = 10;
+	const int MAX = 1000;
 	Random r;
 	for (int i = 0; i < MAX; i++) {
 		T o;
@@ -250,7 +250,7 @@ static void understanding_access(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& 
 			g.push_front(og);
 		}
 	}
-	print1("After insertiing 1000 elements", a, g, true);
+	print1("After insertiing 1000 elements", a, g);
 	//shuffle now by MAX times
 
 	for (int i = 0; i < MAX; i++) {
@@ -417,7 +417,7 @@ static void test(ddeque<T>& a, deque<T>& g, void(*pf)(int x, T& o), void(*df) (T
 main
 -----------------------------------------------------------------*/
 int main() {
-#if 0
+
 	complex::set_display(verbose);
 	{
 		ddeque<complex> a;
@@ -431,20 +431,21 @@ int main() {
 		test<int>(a, g, construct_an_integer_object, nullptr);
 	}
 
-
-
 	{
 		//TEST pointer to INTEGER
 		ddeque<int*> a;
 		deque<int*>  g; //Gold
 		test<int*>(a, g, construct_an_integer_star_object, delete_obj);
 	}
+
+
 	{
 		//TEST complex
 		ddeque<complex> a;
 		deque<complex>  g; //Gold
 		test<complex>(a, g, construct_an_complex_object, nullptr);
 	}
+
 	{
 		//TEST pointer to complex
 
@@ -452,26 +453,10 @@ int main() {
 		deque<complex*>  g; //Gold
 		test<complex*>(a, g, construct_an_complex_star_object, delete_obj);
 	}
+
 	cout << "ALL TESTs PassED. You can rest in peace" << endl;
 	cout << "push, pop, front, back, a[i] must take O(1) in your ddeque operation\n";
 	cout << "Otherwise, you will get C for this assignment\n";
-#endif // 0
-
-#if 0
-	//complex::set_display(verbose);
-	ddeque<int> a;
-	deque<int> g;
-	//print1("begin with", a, g);
-	test<int>(a, g, construct_an_integer_object, nullptr);
-	//a.push_back(complex(7, -8));
-
-	//complex* b = new complex(0);  
-#endif // 0
-	
-	ddeque<complex*> a;
-	deque<complex*>  g; //Gold
-	test<complex*>(a, g, construct_an_complex_star_object, delete_obj);
-
 
 	return 0;
 }
